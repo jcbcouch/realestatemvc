@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using realestatemvc.Models;
 
 namespace realestatemvc.Data
@@ -11,5 +12,6 @@ namespace realestatemvc.Data
         {
         }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<Listing> Listings { get; set; }
     }
 }
