@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace realestatemvc.Controllers
+namespace realestatemvc.Areas.Guest.Controllers
 {
-    public class ListingController : Controller
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {

@@ -1,4 +1,6 @@
-﻿namespace realestatemvc.Models.ViewModels
+﻿using realestatemvc.Areas.Auth.Models;
+
+namespace realestatemvc.Areas.Auth.Models.ViewModels
 {
     public class RolesViewModel
     {

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace realestatemvc.Models
+namespace realestatemvc.Areas.Auth.Models
 {
     public class ApplicationUser : IdentityUser
     {

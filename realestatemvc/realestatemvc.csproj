@@ -7,12 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Auth\Views\NewFolder1\**" />
+    <Compile Remove="Areas\Auth\Views\NewFolder\**" />
+    <Content Remove="Areas\Auth\Views\NewFolder1\**" />
+    <Content Remove="Areas\Auth\Views\NewFolder\**" />
+    <EmbeddedResource Remove="Areas\Auth\Views\NewFolder1\**" />
+    <EmbeddedResource Remove="Areas\Auth\Views\NewFolder\**" />
+    <None Remove="Areas\Auth\Views\NewFolder1\**" />
+    <None Remove="Areas\Auth\Views\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.14">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Realtor\Controllers\" />
+    <Folder Include="Areas\Realtor\Views\" />
   </ItemGroup>
 
 </Project>

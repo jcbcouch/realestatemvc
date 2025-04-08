@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using realestatemvc.Models.ViewModels;
-using realestatemvc.Models;
+using realestatemvc.Areas.Auth.Models;
+using realestatemvc.Areas.Auth.Models.ViewModels;
 
-namespace realestatemvc.Controllers
+namespace realestatemvc.Areas.Account.Controllers
 {
     public class AccountController : Controller
     {

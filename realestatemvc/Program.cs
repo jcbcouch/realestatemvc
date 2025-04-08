@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using realestatemvc.Data;
-using realestatemvc.Models;
+using realestatemvc.Areas.Auth.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,6 +47,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Guest}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

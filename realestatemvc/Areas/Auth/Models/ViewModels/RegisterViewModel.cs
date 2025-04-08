@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
-namespace realestatemvc.Models.ViewModels
+namespace realestatemvc.Areas.Auth.Models.ViewModels
 {
     public class RegisterViewModel
     {

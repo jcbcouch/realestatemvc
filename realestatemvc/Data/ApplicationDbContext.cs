@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using realestatemvc.Models;
+using realestatemvc.Areas.Auth.Models;
 
 namespace realestatemvc.Data
 {
