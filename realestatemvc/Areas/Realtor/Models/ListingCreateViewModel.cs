@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace realestatemvc.Models.ViewModels
+namespace realestatemvc.Areas.Realtor.Models
 {
     public class ListingCreateViewModel
     {
@@ -30,8 +30,7 @@ namespace realestatemvc.Models.ViewModels
         public double LotSize { get; set; }
         [Required]
         public bool IsPublished { get; set; }
-        [Required]
-        public IFormFile PhotoMain { get; set; }
+        public IFormFile? PhotoMain { get; set; }
         public IFormFile? PhotoOne { get; set; }
         public IFormFile? PhotoTwo { get; set; }
         public IFormFile? PhotoThree { get; set; }

@@ -9,12 +9,16 @@
   <ItemGroup>
     <Compile Remove="Areas\Auth\Views\NewFolder1\**" />
     <Compile Remove="Areas\Auth\Views\NewFolder\**" />
+    <Compile Remove="wwwroot\css\NewFolder\**" />
     <Content Remove="Areas\Auth\Views\NewFolder1\**" />
     <Content Remove="Areas\Auth\Views\NewFolder\**" />
+    <Content Remove="wwwroot\css\NewFolder\**" />
     <EmbeddedResource Remove="Areas\Auth\Views\NewFolder1\**" />
     <EmbeddedResource Remove="Areas\Auth\Views\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\css\NewFolder\**" />
     <None Remove="Areas\Auth\Views\NewFolder1\**" />
     <None Remove="Areas\Auth\Views\NewFolder\**" />
+    <None Remove="wwwroot\css\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,8 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Realtor\Controllers\" />
-    <Folder Include="Areas\Realtor\Views\" />
+    <Folder Include="Models\ViewModels\" />
   </ItemGroup>
 
 </Project>

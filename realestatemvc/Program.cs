@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using realestatemvc.Data;
 using realestatemvc.Areas.Auth.Models;
+using realestatemvc.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,8 @@ builder.Services.Configure<IdentityOptions>(opt =>
     opt.Password.RequireNonAlphanumeric = false;
 
 });
+
+builder.Services.AddScoped<IListingService, ListingService>();
 
 var app = builder.Build();
 
