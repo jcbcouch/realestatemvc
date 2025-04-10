@@ -17,5 +17,20 @@ namespace realestatemvc.Areas.Guest.Controllers
             List<Listing> listings = _listingService.GetAllListings().ToList();
             return View(listings);
         }
+
+
+        public async Task<IActionResult> SingleListing(int listingId)
+        {
+            if (listingId == 0)
+            {
+                return BadRequest();
+            }
+            Listing listing = await _listingService.GetListing(listingId);
+            if (listing == null)
+            {
+                return NotFound();
+            }
+            return View(listing);
+        }
     }
 }

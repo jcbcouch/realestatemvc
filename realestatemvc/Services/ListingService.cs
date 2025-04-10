@@ -10,6 +10,7 @@ namespace realestatemvc.Services
     {
         Task AddListing(Listing listing);
         IQueryable<Listing> GetAllListings();
+        Task<Listing> GetListing(int listingId);
     }
 
     public class ListingService : IListingService
@@ -33,6 +34,12 @@ namespace realestatemvc.Services
         {
             IQueryable<Listing> listings = _listing.GetAll().OrderByDescending(u => u.Created).AsNoTracking();
             return listings;
+        }
+
+        public async Task<Listing> GetListing(int listingId)
+        {
+            Listing listing = await _listing.GetAll().Where(u => u.Id == listingId).FirstOrDefaultAsync();
+            return listing;
         }
     }
 }
