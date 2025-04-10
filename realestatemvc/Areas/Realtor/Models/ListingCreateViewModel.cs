@@ -37,5 +37,6 @@ namespace realestatemvc.Areas.Realtor.Models
         public IFormFile? PhotoFour { get; set; }
         public IFormFile? PhotoFive { get; set; }
         public IFormFile? PhotoSix { get; set; }
+        public string? PhotoMainFileName { get; set; }
     }
 }

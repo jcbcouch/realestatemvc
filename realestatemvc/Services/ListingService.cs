@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using realestatemvc.Data;
 using realestatemvc.Models;
 using realestatemvc.Repository;
@@ -8,6 +9,7 @@ namespace realestatemvc.Services
     public interface IListingService
     {
         Task AddListing(Listing listing);
+        IQueryable<Listing> GetAllListings();
     }
 
     public class ListingService : IListingService
@@ -25,6 +27,12 @@ namespace realestatemvc.Services
         {
             await _listing.Add(listing);
             await _listing.SaveChanges();
+        }
+
+        public IQueryable<Listing> GetAllListings()
+        {
+            IQueryable<Listing> listings = _listing.GetAll().OrderByDescending(u => u.Created).AsNoTracking();
+            return listings;
         }
     }
 }

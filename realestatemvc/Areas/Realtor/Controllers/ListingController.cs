@@ -10,15 +10,20 @@ namespace realestatemvc.Areas.Realtor.Controllers
     public class ListingController : Controller
     {
         private readonly IListingService _listingService;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private ApplicationDbContext _db;
-        public ListingController(IListingService listingService, ApplicationDbContext db)
+        public ListingController(IListingService listingService, 
+                                 IWebHostEnvironment webHostEnvironment,   
+                                 ApplicationDbContext db)
         {
             _listingService = listingService;
+            _webHostEnvironment = webHostEnvironment;
             _db = db;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            List<Listing> listings = _listingService.GetAllListings().ToList();
+            return View(listings);
         }
 
         public IActionResult Create()
@@ -27,11 +32,22 @@ namespace realestatemvc.Areas.Realtor.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Listing obj)
+        public async Task<IActionResult> Create(ListingCreateViewModel obj)
         {
             if (ModelState.IsValid)
             {
-                var listingObj = new Listing
+                if (obj.PhotoMain != null)
+                {
+                    string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, "images/homes");
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(obj.PhotoMain.FileName);
+                    string filePath = Path.Combine(uploadDir, fileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        obj.PhotoMain.CopyTo(fileStream);
+                    }
+                    obj.PhotoMainFileName = fileName;
+                }
+                    var listingObj = new Listing
                 {
                     Title = obj.Title,
                     Address = obj.Address,
@@ -46,11 +62,10 @@ namespace realestatemvc.Areas.Realtor.Controllers
                     Bathrooms = obj.Bathrooms,
                     LotSize = obj.LotSize,
                     IsPublished = obj.IsPublished,
-                    PhotoMain = obj.PhotoMain,
+                    PhotoMain = obj.PhotoMainFileName,
                     Created = System.DateTime.Now
                 };
-                _db.Listings.Add(listingObj);
-                _db.SaveChanges();
+                await _listingService.AddListing(listingObj);
                 return RedirectToAction("Index");
             }
             return View();
