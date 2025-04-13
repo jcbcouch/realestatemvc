@@ -42,41 +42,56 @@
                 <img src="~/images/homes/@Model.PhotoMain" alt="" class="img-main img-fluid mb-3">
                     <!-- Thumbnails -->
                     <div class="row mb-5 thumbs">
+                    @if (!string.IsNullOrEmpty(Model.PhotoOne))
+                    {
                         <div class="col-md-2">
-                            <a href="" data-lightbox="home-images">
-                                <img src="" alt="" class="img-fluid">
+                            <a href="~/images/homes/@Model.PhotoOne" data-lightbox="home-images">
+                                <img src="~/images/homes/@Model.PhotoOne" alt="" class="img-fluid">
                             </a>
                         </div>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.PhotoTwo))
+                    {
+                        <div class="col-md-2">
+                            <a href="~/images/homes/@Model.PhotoTwo" data-lightbox="home-images">
+                                <img src="~/images/homes/@Model.PhotoTwo" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.PhotoThree))
+                    {
+                        <div class="col-md-2">
+                            <a href="~/images/homes/@Model.PhotoThree" data-lightbox="home-images">
+                                <img src="~/images/homes/@Model.PhotoThree" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.PhotoFour))
+                    {
+                        <div class="col-md-2">
+                            <a href="~/images/homes/@Model.PhotoFour" data-lightbox="home-images">
+                                <img src="~/images/homes/@Model.PhotoFour" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.PhotoFive))
+                    {
+                        <div class="col-md-2">
+                            <a href="~/images/homes/@Model.PhotoFive" data-lightbox="home-images">
+                                <img src="~/images/homes/@Model.PhotoFive" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.PhotoSix))
+                    {
+                        <div class="col-md-2">
+                            <a href="~/images/homes/@Model.PhotoSix" data-lightbox="home-images">
+                                <img src="~/images/homes/@Model.PhotoSix" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    }
 
-                        <div class="col-md-2">
-                            <a href="" data-lightbox="home-images">
-                                <img src="" alt="" class="img-fluid">
-                            </a>
-                        </div>
-
-                        <div class="col-md-2">
-                            <a href="" data-lightbox="home-images">
-                                <img src="" alt="" class="img-fluid">
-                            </a>
-                        </div>
-
-                        <div class="col-md-2">
-                            <a href="" data-lightbox="home-images">
-                                <img src="" alt="" class="img-fluid">
-                            </a>
-                        </div>
-
-                        <div class="col-md-2">
-                            <a href="" data-lightbox="home-images">
-                                <img src="" alt="" class="img-fluid">
-                            </a>
-                        </div>
-
-                        <div class="col-md-2">
-                            <a href="" data-lightbox="home-images">
-                                <img src="" alt="" class="img-fluid">
-                            </a>
-                        </div>
+                        
                     </div>
                     <!-- Fields -->
                     <div class="row mb-5 fields">

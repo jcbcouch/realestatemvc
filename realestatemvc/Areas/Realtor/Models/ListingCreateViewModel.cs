@@ -30,7 +30,8 @@ namespace realestatemvc.Areas.Realtor.Models
         public double LotSize { get; set; }
         [Required]
         public bool IsPublished { get; set; }
-        public IFormFile? PhotoMain { get; set; }
+        [Required]
+        public IFormFile PhotoMain { get; set; }
         public IFormFile? PhotoOne { get; set; }
         public IFormFile? PhotoTwo { get; set; }
         public IFormFile? PhotoThree { get; set; }
@@ -38,5 +39,13 @@ namespace realestatemvc.Areas.Realtor.Models
         public IFormFile? PhotoFive { get; set; }
         public IFormFile? PhotoSix { get; set; }
         public string? PhotoMainFileName { get; set; }
+
+        //public List<string> fileNames = new List<string>(6);
+        public string? PhotoOneFileName { get; set; }
+        public string? PhotoTwoFileName { get; set; }
+        public string? PhotoThreeFileName { get; set; }
+        public string? PhotoFourFileName { get; set; }
+        public string? PhotoFiveFileName { get; set; }
+        public string? PhotoSixFileName { get; set; }
     }
 }
