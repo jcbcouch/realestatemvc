@@ -11,12 +11,16 @@ namespace realestatemvc.Areas.Account.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
-            RoleManager<IdentityRole> roleManager)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public AccountController(UserManager<ApplicationUser> userManager, 
+                                 SignInManager<ApplicationUser> signInManager,
+                                 RoleManager<IdentityRole> roleManager,
+                                 IWebHostEnvironment webHostEnvironment)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _roleManager = roleManager;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<IActionResult> Register(string returnurl = null)
@@ -53,6 +57,46 @@ namespace realestatemvc.Areas.Account.Controllers
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, SD.User);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
+            return View(model);
+        }
+
+        public async Task<IActionResult> RegisterRealtor(string returnurl = null)
+        {
+            ViewData["ReturnUrl"] = returnurl;
+            RegisterViewModel registerViewModel = new();
+            return View(registerViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegisterRealtor(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, "images/realtors");
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(model.Image.FileName);
+                string filePath = Path.Combine(uploadDir, fileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.Image.CopyTo(fileStream);
+                }
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Name = model.UserName,
+                    ImagePath = fileName
+                };
+
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, SD.Realtor);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }

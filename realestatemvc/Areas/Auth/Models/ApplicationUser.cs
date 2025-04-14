@@ -8,6 +8,8 @@ namespace realestatemvc.Areas.Auth.Models
     {
         [Required]
         public string Name { get; set; }
+        [Required]
+        public string ImagePath { get; set; }
         [NotMapped]
         public string RoleId { get; set; }
         [NotMapped]
