@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using realestatemvc.Areas.Auth.Models;
 using realestatemvc.Data;
 using realestatemvc.Models;
 using realestatemvc.Services;
@@ -8,9 +10,11 @@ namespace realestatemvc.Areas.Guest.Controllers
     public class HomeController : Controller
     {
         private readonly IListingService _listingService;
-        public HomeController(IListingService listingService)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public HomeController(IListingService listingService, UserManager<ApplicationUser> userManager)
         {
             _listingService = listingService;
+            _userManager = userManager;
         }
         public async Task<IActionResult> Index()
         {
@@ -31,6 +35,14 @@ namespace realestatemvc.Areas.Guest.Controllers
                 return NotFound();
             }
             return View(listing);
+        }
+
+
+        public async Task<IActionResult> About()
+        {
+            var users = await _userManager.GetUsersInRoleAsync(SD.Realtor);
+            var three = users.Take(3);
+            return View(three);
         }
     }
 }

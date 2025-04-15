@@ -160,7 +160,8 @@ namespace realestatemvc.Areas.Realtor.Controllers
                     PhotoFour = obj.PhotoFourFileName,
                     PhotoFive = obj.PhotoFiveFileName,
                     PhotoSix = obj.PhotoSixFileName,
-                    Created = System.DateTime.Now
+                    Created = System.DateTime.Now,
+                    IdentityUserId = obj.IdentityUserId                
                 };
                 await _listingService.AddListing(listingObj);
                 return RedirectToAction("Index");

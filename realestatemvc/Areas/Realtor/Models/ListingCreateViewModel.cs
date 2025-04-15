@@ -47,5 +47,8 @@ namespace realestatemvc.Areas.Realtor.Models
         public string? PhotoFourFileName { get; set; }
         public string? PhotoFiveFileName { get; set; }
         public string? PhotoSixFileName { get; set; }
+
+        [Required]
+        public string? IdentityUserId { get; set; }
     }
 }

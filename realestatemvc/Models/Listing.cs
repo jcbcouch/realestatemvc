@@ -1,4 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using realestatemvc.Areas.Auth.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace realestatemvc.Models
 {
@@ -39,5 +42,11 @@ namespace realestatemvc.Models
         public string? PhotoFive { get; set; }
         public string? PhotoSix { get; set; }
         public DateTime Created { get; set; }
+
+        [Required]
+        public string? IdentityUserId { get; set; }
+        [ForeignKey("IdentityUserId")]
+        [ValidateNever]
+        public ApplicationUser? User { get; set; }
     }
 }

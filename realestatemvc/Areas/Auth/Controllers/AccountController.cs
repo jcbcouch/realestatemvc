@@ -65,9 +65,8 @@ namespace realestatemvc.Areas.Account.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> RegisterRealtor(string returnurl = null)
+        public async Task<IActionResult> RegisterRealtor()
         {
-            ViewData["ReturnUrl"] = returnurl;
             RegisterViewModel registerViewModel = new();
             return View(registerViewModel);
         }
@@ -90,7 +89,8 @@ namespace realestatemvc.Areas.Account.Controllers
                     UserName = model.Email,
                     Email = model.Email,
                     Name = model.UserName,
-                    ImagePath = fileName
+                    ImagePath = fileName,
+                    PhoneNumber = model.PhoneNumber
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);

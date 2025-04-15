@@ -1,4 +1,6 @@
 ﻿@model ListingCreateViewModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
 
 
 <div class="card shadow border-0 mt-4">
@@ -14,6 +16,7 @@
             <div class="border p-3">
                 @* <div asp-validation-summary="ModelOnly"></div>
                 <div asp-validation-summary="None"></div> *@
+                <input type="hidden" asp-for="IdentityUserId" class="form-control" value="@UserManager.GetUserId(User)" />
                 <div class="form-floating py-2 col-12">
                     <input asp-for="Title" class="form-control border-0 shadow" />
                     <label asp-for="Title" class="ms-2"></label>

@@ -38,7 +38,7 @@ namespace realestatemvc.Services
 
         public async Task<Listing> GetListing(int listingId)
         {
-            Listing listing = await _listing.GetAll().Where(u => u.Id == listingId).FirstOrDefaultAsync();
+            Listing listing = await _listing.GetAll().Where(u => u.Id == listingId).Include(u => u.User).FirstOrDefaultAsync();
             return listing;
         }
     }
